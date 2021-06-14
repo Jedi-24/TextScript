@@ -1,0 +1,16 @@
+{
+  "name": "textscript",
+  "version": "1.0.0",
+  "description": "Just a simple texting webApp :)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "author": "Jay Aggarwal",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.1.2"
+  }
+}
