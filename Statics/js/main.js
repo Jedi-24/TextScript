@@ -53,15 +53,8 @@ function outputText(sext){
     document.querySelector('.chat-messages').append(div);
 }
  
-
 function getLocalTime() {
-    let offset = new Date().getTimezoneOffset();
-    let formatted = (offset / 60);
-
-    let date = new Date();
-    let systemTime = date.getTime() + (date.getTimezoneOffset() * 60 * 1000);
-
-    let clientTime = new Date(systemTime + (36 * 100 * 1000 * formatted));
+    let clientTime = new Date();
 
     let hour = clientTime.getHours();
     if (hour > 12) {
@@ -71,7 +64,6 @@ function getLocalTime() {
     let amPm = clientTime.toLocaleTimeString().split(' ')[1];
     return `${hour}:${min} ${amPm}`;
 }
-
 
 
 //add room name to DOM..
