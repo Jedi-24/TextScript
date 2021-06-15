@@ -53,6 +53,8 @@ function outputText(sext){
     document.querySelector('.chat-messages').append(div);
 }
  
+
+// method to extract local time, no need of time from the server side. 
 function getLocalTime() {
     let clientTime = new Date();
 
