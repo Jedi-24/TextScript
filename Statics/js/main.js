@@ -46,13 +46,34 @@ form.addEventListener('submit',(e)=>{
 function outputText(sext){
     const div= document.createElement('div');
     div.classList.add('message');
-    div.innerHTML=`<p class="meta">${sext.user}<span>${sext.time}</span></p>
+    div.innerHTML=`<p class="meta">${sext.user}<span>${' '}</span><span>${getLocalTime()}</span></p>
     <p class="text">
        ${sext.txt}
     </p>`
     document.querySelector('.chat-messages').append(div);
 }
  
+
+function getLocalTime() {
+    let offset = new Date().getTimezoneOffset();
+    let formatted = (offset / 60);
+
+    let date = new Date();
+    let systemTime = date.getTime() + (date.getTimezoneOffset() * 60 * 1000);
+
+    let clientTime = new Date(systemTime + (36 * 100 * 1000 * formatted));
+
+    let hour = clientTime.getHours();
+    if (hour > 12) {
+        hour -= 12
+    }
+    let min = clientTime.getMinutes();
+    let amPm = clientTime.toLocaleTimeString().split(' ')[1];
+    return `${hour}:${min} ${amPm}`;
+}
+
+
+
 //add room name to DOM..
  function outputRoom(room){
  roomName.innerText=room
