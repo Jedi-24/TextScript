@@ -8,7 +8,7 @@ const formattext=(user,text)=>{
 return {
     user,
     txt:text,
-    time: moment.format('h:mm a').local()
+    time: moment.format('h:mm a')
 }
 }
 
