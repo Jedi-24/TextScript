@@ -8,7 +8,7 @@ const formattext=(user,text)=>{
 return {
     user,
     txt:text,
-    time: localtz.format('h:mm a')
+    time: date.format('h:mm a')
 }
 }
 
