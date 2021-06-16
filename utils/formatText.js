@@ -13,7 +13,6 @@ return {
     }
 }*/
 
-module.exports={
-    formattext,
+module.exports=
+    formattext;
     //locationGenerator
-}
