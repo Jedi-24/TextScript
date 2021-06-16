@@ -14,6 +14,7 @@ const form = document.getElementById('chat-form')
 const chatbox=document.querySelector('.chat-messages');
 const roomName=document.querySelector('#room-name')
 const userz=document.querySelector('#users')
+const location=document.querySelector('#loc-n btn')
 
 socket.on('roommembz',({room,users})=>{
     outputRoom(room);
@@ -42,6 +43,31 @@ form.addEventListener('submit',(e)=>{
     e.target.elements.msg.focus();
 })
 
+//location button event listener
+location.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    if(!navigator.geolocation)
+    return alert('Geolocation is not supported in your browser,try a different one!');
+    else{
+        navigator.geolocation.getCurrentPosition(function(position){
+            socket.emit('location infoz',{
+                username,  //not needed.ig.
+                lat: position.coords.latitude,
+                lon: position.coords.longitude
+            })
+        },function(){
+            return alert('unable to get your location')
+        })
+    }
+})
+
+// catch location message
+socket.on('sendLocationText',(message)=>{
+    outputLocation(message);
+    chatbox.scrollTop=chatbox.scrollHeight;
+})
+
+
 //output message to DOM
 function outputText(sext){
     const div= document.createElement('div');
@@ -51,6 +77,22 @@ function outputText(sext){
        ${sext.txt}
     </p>`
     document.querySelector('.chat-messages').append(div);
+}
+
+//output location to the DOM 
+function outputLocation(message){
+    const div= document.createElement('div');
+    div.classList.add('message');
+    const p=document.createElement('p');
+    p.classList.add('meta');
+    p.innerText=message.username;
+    div.append(p);
+    const a = document.createElement('a');
+  a.innerText ="Here is my location!"
+  a.setAttribute('href',`https://google.com/maps?q=${message.lat},${message.lon}`)
+  a.setAttribute('target','_blank')
+  div.appendChild(a);
+  document.querySelector('.chat-messages').appendChild(div);
 }
  
 

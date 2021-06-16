@@ -33,6 +33,12 @@ io.on('connection', socket =>{
       //console.log(txt);
       io.to(user.room).emit('msg',formattext(user.username,txt))
     })
+    //catch location info emitted by client.
+    socket.on('location infoz',(coordinates)=>{
+        const user=getCurrentUser(socket.id);
+
+        io.to(user.room).emit('sendLocationText', locationGenerator(user.username,coordinates))
+    })
     //runs when a user disconnects
     socket.on('disconnect',()=>{
         const user=userLeave(socket.id);
