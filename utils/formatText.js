@@ -13,6 +13,7 @@ function locationGenerator(username,coordinates){
     }
 }
 
-module.exports=
+module.exports={
     formattext,
     locationGenerator
+}
