@@ -45,7 +45,7 @@ form.addEventListener('submit',(e)=>{
 
 //location button event listener
 location.addEventListener('submit',(e)=>{
-    e.preventDefault();
+   
     if(!navigator.geolocation)
     return alert('Geolocation is not supported in your browser,try a different one!');
     else{
@@ -59,6 +59,7 @@ location.addEventListener('submit',(e)=>{
             return alert('unable to get your location')
         })
     }
+    e.preventDefault();
 })
 
 // catch location message
