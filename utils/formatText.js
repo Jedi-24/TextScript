@@ -5,15 +5,15 @@ return {
 }
 }
 
-function locationGenerator(username,coordinates){
+/*function locationGenerator(username,coordinates){
     return {
         username,
         lat: coordinates.lat,
         lon: coordinates.lon
     }
-}
+}*/
 
 module.exports={
     formattext,
-    locationGenerator
+    //locationGenerator
 }

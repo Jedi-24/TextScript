@@ -14,7 +14,7 @@ const form = document.getElementById('chat-form')
 const chatbox=document.querySelector('.chat-messages');
 const roomName=document.querySelector('#room-name')
 const userz=document.querySelector('#users')
-const location=document.querySelector('#loc-n btn')
+//const location=document.querySelector('#loc-n btn')
 
 socket.on('roommembz',({room,users})=>{
     outputRoom(room);
@@ -44,7 +44,7 @@ form.addEventListener('submit',(e)=>{
 })
 
 //location button event listener
-location.addEventListener('submit',(e)=>{
+/*location.addEventListener('submit',(e)=>{
     e.preventDefault();
     if(!navigator.geolocation)
     return alert('Geolocation is not supported in your browser,try a different one!');
@@ -65,7 +65,7 @@ location.addEventListener('submit',(e)=>{
 socket.on('sendLocationText',(message)=>{
     outputLocation(message);
     chatbox.scrollTop=chatbox.scrollHeight;
-})
+})*/
 
 
 //output message to DOM
@@ -80,7 +80,7 @@ function outputText(sext){
 }
 
 //output location to the DOM 
-function outputLocation(message){
+/*function outputLocation(message){
     const div= document.createElement('div');
     div.classList.add('message');
     const p=document.createElement('p');
@@ -93,7 +93,7 @@ function outputLocation(message){
   a.setAttribute('target','_blank')
   div.appendChild(a);
   document.querySelector('.chat-messages').appendChild(div);
-}
+}*/
  
 
 // method to extract local time, no need of time from the server side. 
