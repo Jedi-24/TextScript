@@ -14,7 +14,7 @@ const form = document.getElementById('chat-form')
 const chatbox=document.querySelector('.chat-messages');
 const roomName=document.querySelector('#room-name')
 const userz=document.querySelector('#users')
-const location=document.querySelector('#loc-n btn')
+const loc=document.getElementById('loc')
 
 socket.on('roommembz',({room,users})=>{
     outputRoom(room);
@@ -44,7 +44,7 @@ form.addEventListener('submit',(e)=>{
 })
 
 //location button event listener
-location.addEventListener('submit',(e)=>{
+loc.addEventListener('click',(e)=>{
    
     if(!navigator.geolocation)
     return alert('Geolocation is not supported in your browser,try a different one!');

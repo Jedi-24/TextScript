@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socket= require('socket.io');
-const formattext= require('./utils/formatText')
+const {formattext}= require('./utils/formatText')
 const { userJoin,getCurrentUser,userLeave,roomUsers}= require('./utils/users')
 const app =express();
 const server = http.createServer(app) // important.
@@ -37,7 +37,7 @@ io.on('connection', socket =>{
     socket.on('location infoz',(coordinates)=>{
         const user=getCurrentUser(socket.id);
 
-        io.to(user.room).emit('sendLocationText', locationGenerator(user.username,coordinates))
+        io.to(user.room).emit('sendLocationText', coordinates)
     })
     //runs when a user disconnects
     socket.on('disconnect',()=>{
@@ -50,7 +50,7 @@ io.on('connection', socket =>{
     })
 })
 //process.env.PORT makes an environment variable named PORT in case 3000 PORT is not there.
-const PORT= process.env.PORT; 
+const PORT= process.env.PORT;
 
 //using server.listen instead of app.listen(related to createServer method...)
 server.listen(PORT,()=>{
