@@ -1,10 +1,10 @@
-function formattext(user,text){
-return {
-    user,
-    txt:text,
-}
+function formattext(user, text) {
+    return {
+        user,
+        txt: text,
+    }
 }
 
-module.exports={
+module.exports = {
     formattext
 }
