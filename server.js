@@ -54,7 +54,7 @@ io.on('connection', socket => {
     })
 })
 //process.env.PORT makes an environment variable named PORT in case 3000 PORT is not there.
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 //using server.listen instead of app.listen(related to createServer method...)
 server.listen(PORT, () => {
